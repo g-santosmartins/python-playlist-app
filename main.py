@@ -20,7 +20,7 @@ def menu():
 def buscaMusicaValidar(nome):
   for musica in musicasCadastradas:
     # print(musica)
-    nomeEncontrado = musica[0]
+    nomeEncontrado = musica[2]
     if (nome == nomeEncontrado):
       return True
     else:
@@ -29,7 +29,7 @@ def buscaMusicaValidar(nome):
 def buscaMusica(nome):
   for musica in musicasCadastradas:
     # print(musica)
-    nomeEncontrado = musica[0]
+    nomeEncontrado = musica[2]
     if (nome == nomeEncontrado):
       print("Musica Encontrada")
       return musica
@@ -58,7 +58,6 @@ def novo():
     return
   else:
     musicasCadastradas.append([newmc.estilo, newmc.cantor,newmc.titulo ])
-    print(musicasCadastradas)
 
 
 
@@ -119,9 +118,9 @@ def gerarPlaylistPorCantor():
     busca = input("Digite o nome do Autor>>")
     resultadoDaBusca = buscaAutor(busca)
     if(resultadoDaBusca):
-      playlistPorMusica.append(resultadoDaBusca)
+      playlistPorAutor.append(resultadoDaBusca)
       faixa("NOSSA PLAYLIST POR Cantor")
-      for musica in playlistPorMusica:
+      for musica in playlistPorAutor:
         print(musica)
     else:
       print("Música não encontrada, tente outra")
@@ -133,19 +132,9 @@ def faixa(texto):
     print(f'{texto.upper()}'.center(40))
     print('<>' * 20)
 
+# data to be set
 playlistPorMusica = []
-'''
-musicasCadastradas = [
-  ["Helpless", "John Mayer", "Blues"],
-  ["Helpless", "John Mayer", "Blues"],
-  ["Helpless", "John Mayer", "Blues"],
-  ["Helpless", "John Mayer", "Blues"],
-  ["Helpless", "John Mayer", "Blues"],
-  ["Helpless", "John Mayer", "Blues"],
-  ["Helpless", "John Mayer", "Blues"],
-]
-'''
-
+playlistPorAutor = []
 musicasCadastradas=[]
 
 

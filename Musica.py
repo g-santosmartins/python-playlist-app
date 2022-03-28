@@ -3,7 +3,7 @@
 # • Exibir: que deverá retornar uma string com todas as informações da música.
 
 class Musica:
-  def __init__(self, titulo, cantor, estilo) -> None:
+  def __init__(self, estilo, cantor, titulo) -> None:
        self.estilo = estilo
        self.cantor = cantor 
        self.titulo = titulo

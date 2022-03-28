@@ -22,10 +22,8 @@ def buscaMusicaValidar(nome):
     # print(musica)
     nomeEncontrado = musica[0]
     if (nome == nomeEncontrado):
-      print("Musica Encontrada")
       return True
     else:
-      print("Musica não encontrada")
       return False
 
 def buscaMusica(nome):
@@ -51,44 +49,74 @@ def buscaAutor(autor):
 
 #Metodos dos sistema
 def novo():
-  pass
+  newmctitulo= input('informe o titulo da musica >>')
+  newmccantor= input('informe o cantor da musica >>')
+  newmcestilo= input('informe o estilo da musica >>')
 
-def consultar():
-  busca = input("Digite o nome da música>>")
-  resultadoDaBusca = buscaMusicaValidar(busca)
+  newmc = Musica(newmcestilo,newmccantor,newmctitulo)
+  if(consultar(newmc.titulo)==1):
+    return
+  else:
+    musicasCadastradas.append([newmc.estilo, newmc.cantor,newmc.titulo ])
+    print(musicasCadastradas)
+
+
+
+def consultar(cns=''):
+  if(cns==''):
+    busca = input("Digite o nome da música>>")
+    resultadoDaBusca = buscaMusicaValidar(busca)
+  else:
+    resultadoDaBusca = buscaMusicaValidar(cns)
+
   if(resultadoDaBusca):
     print("Música já cadastrada")
-    return
-  print("Música não cadastrada")
+    return 1
+  else:
+    print("Música não cadastrada")
+    return 0
 
 def listar():
-  for i in musicasCadastradas:
-    print(i)
+  for i in range(0, len(musicasCadastradas)):
+    print(musicasCadastradas[i])
 
 def gerarPlaylistPorMusica():
   while True:
-    querMais = input("Deseja adicionar música? S/N>>")
-    busca = input("Digite o nome da Música>>")
-    resultadoDaBusca = buscaAutor(busca)
-    if(resultadoDaBusca):
-      playlistPorMusica.append(resultadoDaBusca)
-      faixa("NOSSA PLAYLIST POR MÚSICA")
-      for musica in playlistPorMusica:
-        print(musica)
-    else:
-      print("Música não encontrada, tente outra")
-     
-    if(querMais != "N" or "nao" or "Não" or "Nao" or  "no" or "n" or "No"):
+    querMais = input("Deseja adicionar música? S ou Enter/N>>")
+    if(querMais == "N"
+     or querMais == "n"
+     or querMais == "Não" 
+     or querMais == "nao" 
+     or querMais == "não"):
+      print("saindo aqui")
       break
-
+    else:
+      busca = input("Digite o nome da Música>>")
+      resultadoDaBusca = buscaMusica(busca)
+      print(resultadoDaBusca)
+      if(resultadoDaBusca):
+        playlistPorMusica.append(resultadoDaBusca)
+        faixa("NOSSA PLAYLIST POR MÚSICA")
+        for musica in playlistPorMusica:
+          print(musica)
+      else:
+        print("Música não encontrada, tente outra")
+     
   # for musica in playlistPorMusica:
   #   print(musica)
 
 
 def gerarPlaylistPorCantor():
   while True:
-    querMais = input("Deseja adicionar música? S/N>>")
-    busca = input("Digite o nome da Música>>")
+    querMais = input("Deseja adicionar música? S ou Enter/N>>")
+    if(querMais == "N"
+     or querMais == "n"
+     or querMais == "Não" 
+     or querMais == "nao" 
+     or querMais == "não"):
+      print("saindo aqui")
+      break
+    busca = input("Digite o nome do Autor>>")
     resultadoDaBusca = buscaAutor(busca)
     if(resultadoDaBusca):
       playlistPorMusica.append(resultadoDaBusca)
@@ -106,6 +134,7 @@ def faixa(texto):
     print('<>' * 20)
 
 playlistPorMusica = []
+'''
 musicasCadastradas = [
   ["Helpless", "John Mayer", "Blues"],
   ["Helpless", "John Mayer", "Blues"],
@@ -115,6 +144,10 @@ musicasCadastradas = [
   ["Helpless", "John Mayer", "Blues"],
   ["Helpless", "John Mayer", "Blues"],
 ]
+'''
+
+musicasCadastradas=[]
+
 
 while True:
     faixa('Menu de Opções')

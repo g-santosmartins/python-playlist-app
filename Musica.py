@@ -9,5 +9,5 @@ class Musica:
        self.titulo = titulo
 
   def __str__(self):
-    return f'Titulo{self.titulo} - Cantor: {self.cantor} - Estilo: {self.cantor}'
+    return f'Estilo: {self.estilo} - Cantor: {self.cantor} - Titulo{self.titulo}'
       

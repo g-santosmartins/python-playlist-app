@@ -38,14 +38,15 @@ def buscaMusica(nome):
       
 
 def buscaAutor(autor):
+  listaMesmoAutor = []
   for musica in musicasCadastradas:
     autorEncontrado = musica[1]
     # print(autorEncontrado)
     if(autor == autorEncontrado):
       print("Autor Encontrado")
-      return musica
+      listaMesmoAutor.append(musica)
+  return listaMesmoAutor
     
-
 
 #Metodos dos sistema
 def novo():
@@ -117,6 +118,7 @@ def gerarPlaylistPorCantor():
       break
     busca = input("Digite o nome do Autor>>")
     resultadoDaBusca = buscaAutor(busca)
+    print(resultadoDaBusca)
     if(resultadoDaBusca):
       playlistPorAutor.append(resultadoDaBusca)
       faixa("NOSSA PLAYLIST POR Cantor")
@@ -125,7 +127,6 @@ def gerarPlaylistPorCantor():
     else:
       print("Música não encontrada, tente outra")
      
-
 
 def faixa(texto):
     print('<>' * 20)
@@ -136,7 +137,6 @@ def faixa(texto):
 playlistPorMusica = []
 playlistPorAutor = []
 musicasCadastradas=[]
-
 
 while True:
     faixa('Menu de Opções')
